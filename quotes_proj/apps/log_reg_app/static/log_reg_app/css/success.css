@@ -1,0 +1,17 @@
+.card {
+    margin: 5% auto;
+    width: 800px;
+}
+
+.inner {
+    margin: 5% auto;
+    width: 500px;
+}
+
+h1 {
+    color: green
+}
+
+h5 {
+    color: darkgray;
+}

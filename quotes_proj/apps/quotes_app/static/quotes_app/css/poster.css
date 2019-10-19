@@ -1,0 +1,25 @@
+.wrapper {
+    width: 100%;
+   }
+.btn-light {
+    margin-left: 2%;
+    width: 100px;
+}
+.btn-warning {
+    margin-left: 55%;
+    width: 100px;
+}
+.bg-dark {
+    width: 100%;
+}
+
+.card {
+    width: 800px;
+    margin: 2% auto;
+
+}
+
+.name1 {
+    margin: 2% 40%;
+    width: 350px;
+}

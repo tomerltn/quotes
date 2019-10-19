@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Poster Detials</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'quotes_app/css/poster.css' %}">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="nav">
+            <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+                <a class="navbar-brand" href="/quotes">All of the Quotes</a>
+                <a href="/quotes" class="btn btn-warning">Back</a>
+                <a href="/" class="btn btn-light">Log Out</a>
+            </nav>
+        </div>
+
+        <div class="quotes">  
+            <h4 class="name1"> {{this_poster.first_name}} {{this_poster.last_name}}'s Quotes' </h4>
+            {% for quote in this_poster.quotes_uploaded.all %}
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Posted By: {{quote.posted_by.first_name}} {{quote.posted_by.last_name}} </a></h5>
+                    <h6 class="card-subtitle mb-2 text-muted">ID: {{quote.id}}</h6>
+                    <p class="card-text">{{quote.author}} : {{quote.quote}}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</body>
+</html>

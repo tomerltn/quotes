@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User Details</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'log_reg_app/css/users.css' %}">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="nav">
+        <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+            <a class="navbar-brand" href="/quotes">All of the Quotes</a>
+            <a href="/quotes" class="btn btn-warning">Back</a>
+            <a href="/" class="btn btn-light">Log Out</a>
+        </nav>
+    </div>
+        <form action="/edit_user/{{request.session.id}}" method="POST">
+            {% csrf_token%}
+            {% if messages %}
+                <ul class="messages">    
+            {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+                </ul>
+            {% endif %}
+            <div class="form-group">
+                <label for="exampleInputEmail1"> Update First Name</label>
+                    <input class="form-control" type="text"  value="{{users.first_name}}" name="first_name">
+                <label for="exampleInputEmail1"> Update Last_Name</label>
+                    <input class="form-control" type="text"  value="{{users.last_name}}" name="last_name">
+                <label for="exampleInputEmail1"> Update Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{users.email}}" name="email">
+                <input type="hidden" name="password" id="" value="{{users.password}}">
+                <input type="hidden" name="confirm_password" id="" value="{{users.password}}">
+                <input type="submit" class="btn btn-danger" name="" id="">
+                </div>
+
+        </form>
+</body>
+</html>

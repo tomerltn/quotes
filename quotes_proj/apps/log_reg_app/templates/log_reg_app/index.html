@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login & Registration</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'log_reg_app/css/styles.css' %}">  
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="card" id="reg">
+            <h2 class="heading">Registration</h2>
+            <form class="reg_data" method="POST" action="/register">
+                {% csrf_token %}
+
+                {% if messages %}
+                    <ul class="messages">
+                    {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+                <label for="form-control">First Name</label>
+                    <input class="form-control" type="text" placeholder="First Name Here" name="first_name">
+                <label for="form-control">Last Name</label>
+                    <input class="form-control" type="text" placeholder="Last Name Here" name="last_name">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Confirm Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirm Password" name="confirm_password">
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </div>
+            </form> 
+        </div>
+        <div class="card" id="log">
+            <h2 class="heading2">Log In</h2>
+            <form class="log_data" action="/auth" method="POST">
+                    {% csrf_token %}
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email">
+                
+                </div>
+                    <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </div>
+            </form> 
+
+        </div>
+    </div>
+</body>
+</html>

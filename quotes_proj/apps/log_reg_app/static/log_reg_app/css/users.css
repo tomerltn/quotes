@@ -1,0 +1,20 @@
+.form-group {
+    width: 500px;
+    margin: 5% auto;
+}
+
+.btn-light {
+    margin-left: 2%;
+    width: 100px;
+}
+.btn-warning {
+    margin-left: 55%;
+    width: 100px;
+}
+.bg-dark {
+    width: 100%;
+}
+.btn-danger {
+    width: 100px;
+    margin-top: 1%
+}

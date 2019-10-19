@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Quotes</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'quotes_app/css/quotes.css' %}">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    
+    <div class="wrapper">
+        <div class="nav">
+            <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+                <a class="navbar-brand" href="/quotes">All of the Quotes</a>
+                <a href="/user/{{request.session.id}}" class="btn btn-warning">Edit Account</a>
+                <a href="/" class="btn btn-light">Log Out</a>
+            </nav>
+        </div>
+        <div class="left">
+            <h2 class="name">Welcome, {{request.session.user}}!</h2>
+            {% for quote in all_quotes %}
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Posted By: <a href="/quotes/view_poster/{{quote.posted_by.id}}">{{quote.posted_by.first_name}} {{quote.posted_by.last_name}} </a></h5>
+                    <h6 class="card-subtitle mb-2 text-muted">ID: {{quote.id}}</h6>
+                    <p class="card-text">{{quote.author}} : {{quote.quote}}</p>
+                    <h6>{{quote.users_who_like.count}} people like this</h6>
+                    <a href="/quotes/like_quote/{{quote.id}}"" class="card-link">Like</a>
+                    <a href="/quotes/delete_quote/{{quote.id}}" class="card-link">Delete</a>
+                    
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="right"> 
+            <form action="/quotes/add_quote" method="POST">
+            {% csrf_token %}
+            {% if messages %}
+                <ul class="messages">    
+            {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+                </ul>
+            {% endif %}
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Author</label>
+                <input class="form-control" type="text" placeholder="Author Name Here" name="author">
+                <label for="exampleFormControlTextarea1">Quote</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Quote Goes Here" name="quote"></textarea>
+                <input type="submit" class="btn btn-primary" value="Submit">
+            </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

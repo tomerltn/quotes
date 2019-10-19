@@ -1,0 +1,44 @@
+.wrapper {
+    width: 100%;
+
+}
+.btn-light {
+    margin-left: 2%;
+    width: 100px;
+}
+.btn-warning {
+    margin-left: 55%;
+    width: 150px;
+}
+.bg-dark {
+    width: 100%;
+}
+
+.left , .right {
+    display: inline-block;
+    vertical-align: top;
+    
+}
+
+.left {
+    width: 60%;
+}
+.right {
+    width: 30%;
+    margin: 4% 0;
+}
+.card {
+    width: auto;
+    margin: 5% 5%;
+}
+.name   {
+    margin: 2% 5%;
+}
+
+.btn-primary {
+    margin: 2% 0;
+}
+
+.form-control {
+    margin: 2% 0;
+}
